@@ -1,0 +1,19 @@
+{
+  "id": "x-studio",
+  "name": "X-Studio DAW",
+  "version": "1.0.1",
+  "author": "Awenk Audico / Flowork OS",
+  "description": "Professional Digital Audio Workstation (DAW) for editing, mixing, mastering audio, multi-track recording, and custom destination exporting.",
+  "category": "Media & Audio",
+  "icon": "\ud83c\udf9b\ufe0f",
+  "hash": "f3282cf989e86bf0d85789a9b2d53d73f848898198f7e1a0a2ae8d3ab44449a7",
+  "entry": {
+    "gui": "gui/index.html",
+    "backend": "engine/server.mjs"
+  },
+  "ipc": {
+    "default_port": 17897,
+    "port_env": "FLOWORK_APP_PORT"
+  },
+  "shard": "index/x_/st/x_studio.json"
+}
