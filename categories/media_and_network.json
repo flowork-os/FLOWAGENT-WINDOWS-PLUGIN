@@ -1,28 +1,6 @@
 {
-  "version": "1.3.0",
-  "updated_at": "2026-10-09T01:21:00.000Z",
-  "repo": "flowork-os/FLOWAGENT-WINDOWS-PLUGIN",
+  "category": "Media & Network",
   "plugins": [
-    {
-      "id": "chess",
-      "name": "Sovereign Chess Arena",
-      "version": "1.0.0",
-      "author": "Awenk Audico & Flowork OS",
-      "description": "Dual-Actor Chess Arena: Human vs Agent AI. Play solo or duel with open Agent chat in real-time.",
-      "category": "Games & Strategy",
-      "icon": "\u265f\ufe0f",
-      "hash": "8b16a3add0db016d",
-      "entry": {
-        "gui": "gui/index.html",
-        "backend": "engine/server.mjs"
-      },
-      "ipc": {
-        "port_env": "FLOWORK_APP_PORT",
-        "default_port": 17820
-      },
-      "shard": "index/ch/es/chess.json",
-      "source_path": "plugins/ch/chess"
-    },
     {
       "id": "yt-downloader",
       "name": "YouTube Downloader & Suno Studio",
