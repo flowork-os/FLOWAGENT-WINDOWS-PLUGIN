@@ -2,7 +2,7 @@
 
 # 🪟 Flowork OS Sovereign Plugin Registry (Windows)
 
-**High-Performance Modular GUI & WASM Extensions for Sovereign AI Agents on Windows**
+**High-Performance Modular GUI & WASM Extension Registry for Sovereign AI Agents on Windows**
 
 [![Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/flowork-os/FLOWAGENT-WINDOWS-PLUGIN)
 [![Runtime](https://img.shields.io/badge/Runtime-Node.js%20%7C%20WASM%20%7C%20Win32%20IPC-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://floworkos.com)
@@ -13,10 +13,10 @@
 
 <p align="center">
   <a href="#-overview">Overview</a> •
-  <a href="#-verified-sovereign-plugins">Plugins Catalog</a> •
+  <a href="#-dynamic-discovery--app-store">Discovery</a> •
   <a href="#-architecture--specs">Architecture</a> •
   <a href="#-zero-api-cdn-installation">Installation</a> •
-  <a href="#-plugin-manifest-specification">Plugin Manifest</a> •
+  <a href="#-plugin-manifest-specification">Manifest Spec</a> •
   <a href="#-publishing-guidelines">Publishing</a>
 </p>
 
@@ -26,24 +26,37 @@
 
 ## 🌟 Overview
 
-The **Flowork OS Windows Plugin Registry** is the curated open-source repository of verified, sovereign extensions and desktop applications engineered specifically for **Flowork OS** and autonomous AI agents on Windows environments.
+The **Flowork OS Windows Plugin Registry** is the decentralized package registry for verified sovereign extensions and desktop applications engineered specifically for **Flowork OS** and autonomous AI agents on Windows.
 
 Engineered with the **Nano-Plug Architecture**, plugins deliver high-speed desktop interactivity without sacrificing LLM context or system performance:
-- ⚡ **Zero Prompt Bloat**: Plugins remain off-context until summoned, preserving critical LLM context tokens.
+- ⚡ **Zero Prompt Bloat**: Extensions remain off-context until summoned, preserving critical LLM context tokens.
 - 🪟 **Native Windows & Canvas Integration**: Seamless execution inside Flowork Canvas UI powered by local Node.js, WASM, or Win32 backend daemons.
-- 🛡️ **Zero-Zombie Process Supervision**: Robust Windows process tree termination (`taskkill /F /T`) ensures zero orphaned background services.
+- 🛡️ **Zero-Zombie Supervision**: Robust Windows process tree termination (`taskkill /F /T`) ensures zero orphaned background services.
 - 🚀 **Zero GitHub API Quota**: Distributed through high-speed Cloudflare edge caching and raw GitHub archive streaming.
 
 ---
 
-## 📦 Verified Sovereign Plugins
+## 🔍 Dynamic Discovery & App Store
 
-| Icon | Plugin Name | ID | Version | Category | Description | Source & Shard |
-| :---: | :--- | :--- | :--- | :--- | :--- | :--- |
-| ♟️ | **Sovereign Chess Arena** | `chess` | `1.0.0` | Games & Strategy | Dual-Actor Chess Arena: Human vs Agent AI. Play solo or duel with open Agent chat in real-time. | [`plugins/ch/chess`](plugins/ch/chess) • [`shard`](index/ch/es/chess.json) |
-| 📹 | **YouTube Downloader & Suno Studio** | `yt-downloader` | `1.2.0` | Media & Network | Sovereign YouTube Video/Audio Extractor with 59s Anti-Copyright Speed Ramp for Suno AI, Custom Folders, and Multi-Format DSP. | [`plugins/yt/yt-downloader`](plugins/yt/yt-downloader) • [`shard`](index/yt/do/yt_downloader.json) |
+To support limitless catalog expansion without bloating repository files, all plugins are indexed dynamically and queried through automated discovery endpoints:
 
-*Want to add your plugin to the official Windows store? See the [Publishing Guidelines](#-publishing-guidelines).*
+### 1. Web App Store
+Explore, search, and inspect plugins interactively on the official portal:
+👉 **[https://plugins.floworkos.com](https://plugins.floworkos.com)**
+
+### 2. Edge Gateway API
+Real-time JSON search endpoint powered by Cloudflare Workers:
+```powershell
+# Query verified Windows plugins
+curl.exe -s "https://plugins.floworkos.com/api/plugins?os=windows&q=chess"
+```
+
+### 3. Agent & CLI Discovery
+Flowork AI agents search the catalog autonomously via semantic indexing:
+```powershell
+# Search registry via Flowork CLI
+flowork plugin search "video editor"
+```
 
 ---
 
@@ -52,30 +65,24 @@ Engineered with the **Nano-Plug Architecture**, plugins deliver high-speed deskt
 ```
 FLOWAGENT-WINDOWS-PLUGIN/
 ├── index/                        # O(1) Crates.io-style sharded lookup metadata
-│   ├── ch/es/chess.json
-│   └── yt/do/yt_downloader.json
+│   └── <aa>/<bb>/<plugin_id>.json
 ├── plugins/                      # Sovereign plugin source roots
-│   ├── ch/chess/
-│   │   ├── plugin.manifest.json  # Plug & Play agnostic manifest
-│   │   ├── SKILL.md              # 20-keyword Agent runbook & SOP
-│   │   ├── gui/                  # HTML5 / Canvas frontend
-│   │   └── engine/               # Node.js / WASM backend
-│   └── yt/yt-downloader/
-│       ├── plugin.manifest.json
-│       ├── SKILL.md
-│       ├── gui/
-│       └── engine/
+│   └── <aa>/<plugin_id>/
+│       ├── plugin.manifest.json  # Plug & Play agnostic manifest
+│       ├── SKILL.md              # 20-keyword Agent runbook & SOP
+│       ├── gui/                  # HTML5 / Canvas frontend
+│       └── engine/               # Node.js / WASM backend
 ├── categories/                   # Category grouping indexes
 ├── plugins.json                  # Root registry index
 └── README.md
 ```
 
-### 1. Two-Tier Directory Sharding
+### Two-Tier Directory Sharding
 To prevent Windows filesystem lookup degradation and ensure instant path resolution:
-$$\text{Path} = \text{plugins}\backslash\{id[0..2]\}\backslash\{id\}$$
-$$\text{Metadata Shard} = \text{index}\backslash\{id[0..2]\}\backslash\{id[2..4]\}\backslash\{id\}.\text{json}$$
+$$\text{Source Path} = \text{plugins}\backslash\{id[0..2]\}\backslash\{id\}$$
+$$\text{Index Shard} = \text{index}\backslash\{id[0..2]\}\backslash\{id[2..4]\}\backslash\{id\}.\text{json}$$
 
-### 2. Windows Process & Port Model
+### Windows Process & Port Model
 1. **Dynamic Port Injection**: Host allocates an available high-number port and passes `%FLOWORK_APP_PORT%` as an environment variable to the plugin process.
 2. **Path Agnostic Runtime**: Paths are normalized across forward slashes and backslashes using Node.js `path.resolve` or Rust `std::path::PathBuf`.
 3. **Graceful Teardown**: Inter-process communication sockets close gracefully, and host enforces cleanup on exit.
@@ -98,7 +105,7 @@ Remove-Item "temp.tar.gz"
 
 Or via Flowork Agent CLI:
 ```powershell
-flowork plugin install chess
+flowork plugin install <plugin_id>
 ```
 
 ---
@@ -109,13 +116,13 @@ Every plugin includes a mandatory `plugin.manifest.json`:
 
 ```json
 {
-  "id": "chess",
-  "name": "Sovereign Chess Arena",
+  "id": "sample-plugin",
+  "name": "Sample Plugin",
   "version": "1.0.0",
   "author": "Flowork OS & Community",
-  "category": "Games & Strategy",
-  "icon": "♟️",
-  "description": "Dual-Actor Chess Arena: Human vs Agent AI with real-time IPC.",
+  "category": "Utilities",
+  "icon": "⚡",
+  "description": "High-performance sovereign extension with real-time IPC.",
   "entry": {
     "gui": "gui/index.html",
     "backend": "engine/server.mjs"
@@ -144,9 +151,9 @@ Every plugin includes a mandatory `plugin.manifest.json`:
 ### Submit via Pull Request
 ```bash
 git checkout -b feature/win-plugin
-# Place plugin in plugins/{prefix}/{plugin_id}
+# Place plugin in plugins/{id[:2]}/{id}
 git add plugins/ index/ plugins.json
-git commit -m "feat(plugin): add windows-compatible plugin"
+git commit -m "feat(plugin): publish <id> to Windows registry"
 git push origin feature/win-plugin
 ```
 
