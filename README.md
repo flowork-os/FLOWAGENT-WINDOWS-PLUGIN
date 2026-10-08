@@ -11,7 +11,16 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://github.com/flowork-os/FLOWAGENT-WINDOWS-PLUGIN/pulls)
 
+<br />
+
+<a href="https://github.com/flowork-os/FLOWORK-AGENT">
+  <img src="https://img.shields.io/badge/%E2%9A%A1%20DOWNLOAD%20FLOWORK%20AGENT-INSTALL%20NOW%20%E2%86%92-FF0055?style=for-the-badge&logo=rocket&logoColor=white&labelColor=0D1117" alt="Download Flowork Agent" height="54" />
+</a>
+
+<br /><br />
+
 <p align="center">
+  <a href="#-get-the-flowork-agent">Download Agent</a> •
   <a href="#-overview">Overview</a> •
   <a href="#-dynamic-discovery--app-store">Discovery</a> •
   <a href="#-architecture--specs">Architecture</a> •
@@ -23,6 +32,22 @@
 ---
 
 </div>
+
+## ⚡ Get the Flowork Agent
+
+To execute sovereign plugins, launch interactive canvas webviews, and orchestrate zero-conflict IPC runtimes, download and install the official **Flowork Agent Engine**:
+
+<div align="center">
+
+[![Download Flowork Agent](https://img.shields.io/badge/%E2%9A%A1%20DOWNLOAD%20FLOWORK%20AGENT-CLICK%20TO%20GET%20STARTED-FF0055?style=for-the-badge&logo=github&logoColor=white&labelColor=0D1117)](https://github.com/flowork-os/FLOWORK-AGENT)
+
+**[👉 https://github.com/flowork-os/FLOWORK-AGENT 👈](https://github.com/flowork-os/FLOWORK-AGENT)**
+
+*Native support for Windows 10/11 • Linux (x86_64, AArch64) • macOS*
+
+</div>
+
+---
 
 ## 🌟 Overview
 
